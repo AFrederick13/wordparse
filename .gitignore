@@ -1,0 +1,12 @@
+# Ignore build artifacts
+build/
+*.o
+
+# Ignore executables
+wordparse
+
+# VSCode specific
+.vscode/
+
+# Ignore reference files
+ref/
