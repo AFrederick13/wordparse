@@ -7,7 +7,7 @@
 // Number of buckets in hash table
 #define BUCKETS 1000
 
-// Maximum length for a word
+// Maximum length for a word in English dictionary
 #define LENGTH 45
 
 // Define the structure for an individual node in the hash table/linked list
