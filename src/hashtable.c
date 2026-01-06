@@ -59,14 +59,7 @@ bool insert_word(const char *word)
     }
 
     // Allocate memory and copy the word into the new node
-    new_node->word = malloc(word_len + 1);
-
-    // Check for malloc failure
-    if (new_node->word == NULL)
-    {
-        free(new_node);
-        return false;
-    }
+    new_node->word = (char *)(new_node + 1);
 
     // Copy the word into the new node
     strcpy(new_node->word, word);
@@ -207,7 +200,6 @@ bool unload(void) {
         // Free each node in the linked list
         while (crawler != NULL) {
             node *temp = crawler->next;
-            free(crawler->word);
             free(crawler);
             crawler = temp;
         }
@@ -244,11 +236,13 @@ unsigned int hash(const char *word) {
 int check(const char *word)
 {
 
+    // Convert the input word to lowercase for case-insensitive comparison
     char lower_word[LENGTH + 1];
-    for (int i = 0; word[i]; i++) {
+    int i;
+    for (i = 0; word[i] != '\0' && i < LENGTH; i++) {
         lower_word[i] = tolower(word[i]);
     }
-    lower_word[strlen(word)] = '\0';
+    lower_word[i] = '\0';
 
     // Hash the lowercase word to find the bucket
     unsigned int hash_index = hash(lower_word);
