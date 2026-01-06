@@ -29,5 +29,6 @@ int check(const char *word);
 bool unload(void);
 bool insert_word(const char *word);
 bool process_raw_word(const char *raw_word);
+void print_table_stats(void);
 
 #endif

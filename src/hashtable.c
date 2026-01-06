@@ -264,3 +264,37 @@ int check(const char *word)
 
     return 0; // Word not found
 }
+
+void print_table_stats() {
+    int occupied_buckets = 0;
+    int longest_chain = 0;
+    
+    for (int i = 0; i < BUCKETS; i++) {
+        int chain_length = 0;
+        node *crawler = hash_table[i];
+        
+        if (crawler != NULL) {
+            occupied_buckets++;
+        }
+        
+        while (crawler != NULL) {
+            chain_length++;
+            crawler = crawler->next;
+        }
+        
+        if (chain_length > longest_chain) {
+            longest_chain = chain_length;
+        }
+    }
+
+    double load_factor = (double)unique_word_count / BUCKETS;
+
+    printf("\n--- Hash Table Health Report ---\n");
+    printf("Total words in file: %d\n", total_words);
+    printf("Total Unique Words: %d\n", unique_word_count);
+    printf("Total Buckets:      %d\n", BUCKETS);
+    printf("Occupied Buckets:  %d\n", occupied_buckets);
+    printf("Load Factor:       %.2f\n", load_factor);
+    printf("Longest Chain:     %d nodes\n", longest_chain);
+    printf("--------------------------------\n");
+}
