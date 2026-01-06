@@ -45,3 +45,15 @@ make
 # Run
 ./wordparse tests/CrimeandPunishment.txt
 ```
+
+## Stats
+
+Ran with 1.7 GB text file:
+
+--- Hash Table Health Report ---
+Total words in file: 207673991
+Total Unique Words: 10327324
+Total Buckets:      1000003
+Occupied Buckets:  999970
+Load Factor:       10.33
+Longest Chain:     28 nodes
