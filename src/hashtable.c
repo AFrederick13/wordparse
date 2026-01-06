@@ -242,27 +242,8 @@ unsigned int hash(const char *word) {
 // Function checks if a word exists in the hash table
 int check(const char *word)
 {
-    // Create a lowercase version of the word to check
-    size_t len = strlen(word);
-
-    // Check if the word is too long
-    if (len > LENGTH)
-    {
-        return 0;
-    }
-
-    // Convert the word to lowercase
-    char lower_word[LENGTH + 1];
-
-    for (size_t i = 0; i < len; i++)
-    {
-        lower_word[i] = tolower(word[i]);
-    }
-    // Null-terminate the lowercase word
-    lower_word[len] = '\0';
-
     // Hash the lowercase word to find the bucket
-    unsigned int hash_index = hash(lower_word);
+    unsigned int hash_index = hash(word);
 
     // Traverse the linked list at the bucket
     node *crawler = hash_table[hash_index];
@@ -270,7 +251,7 @@ int check(const char *word)
     {
 
         // Compare words (case-insensitive)
-        if (strcmp(crawler->word, lower_word) == 0)
+        if (strcasecmp(crawler->word, word) == 0)
         {
             return crawler->count; // Word found, return its count
         }
