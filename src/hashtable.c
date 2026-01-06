@@ -46,8 +46,10 @@ bool insert_word(const char *word)
         crawler = crawler->next;
     }
 
+    size_t word_len = strlen(word);
+
     // If the word is not found, create a new node
-    node *new_node = malloc(sizeof(node));
+    node *new_node = malloc(sizeof(node) + word_len + 1);
 
     // Check for malloc failure
     if (new_node == NULL)
@@ -56,7 +58,6 @@ bool insert_word(const char *word)
     }
 
     // Allocate memory and copy the word into the new node
-    size_t word_len = strlen(word);
     new_node->word = malloc(word_len + 1);
 
     // Check for malloc failure
@@ -67,7 +68,7 @@ bool insert_word(const char *word)
     }
 
     // Copy the word into the new node
-    memcpy(new_node->word, word, word_len + 1);
+    strcpy(new_node->word, word);
     new_node->count = 1; // Initialize count to 1 for a new word
 
     // Insert the new node at the beginning of the list
@@ -132,7 +133,7 @@ bool process_raw_word(const char *raw_word) {
     return true;
 }
 
-// Function loads words from file into hash table, returning true if successful, else false
+// Function to load words from a text file into the hash table
 bool load(const char *textfile) {
 
     // Open the file for reading
