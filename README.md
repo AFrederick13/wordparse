@@ -49,6 +49,7 @@ Ran with 1.7 GB text file:
 --- Hash Table Health Report ---
 
 Total words in file: 207673991
+
 Total Unique Words: 10327324
 
 Total Buckets:      1000003
