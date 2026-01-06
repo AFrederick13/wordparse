@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 // Number of buckets in hash table
-#define BUCKETS 1000
+#define BUCKETS 1000000
 
 // Maximum length for a word in English dictionary
 #define LENGTH 45

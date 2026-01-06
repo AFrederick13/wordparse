@@ -10,3 +10,6 @@ wordparse
 
 # Ignore reference files
 ref/
+
+# 1.7 GB file for internal testing only
+tests/combined_texts.txt
