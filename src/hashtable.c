@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 #include <ctype.h>
 #include <stdbool.h>
 
@@ -242,8 +243,15 @@ unsigned int hash(const char *word) {
 // Function checks if a word exists in the hash table
 int check(const char *word)
 {
+
+    char lower_word[LENGTH + 1];
+    for (int i = 0; word[i]; i++) {
+        lower_word[i] = tolower(word[i]);
+    }
+    lower_word[strlen(word)] = '\0';
+
     // Hash the lowercase word to find the bucket
-    unsigned int hash_index = hash(word);
+    unsigned int hash_index = hash(lower_word);
 
     // Traverse the linked list at the bucket
     node *crawler = hash_table[hash_index];
@@ -251,7 +259,7 @@ int check(const char *word)
     {
 
         // Compare words (case-insensitive)
-        if (strcasecmp(crawler->word, word) == 0)
+        if (strcasecmp(crawler->word, lower_word) == 0)
         {
             return crawler->count; // Word found, return its count
         }

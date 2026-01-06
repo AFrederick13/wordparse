@@ -40,32 +40,32 @@ int main(int argc, char *argv[]) {
     printf("Enter a word to search for (type:  '/quit' or '/exit'  to end the program):\n");
 
     // Interactive loop for user to check words
-    // char input_word[LENGTH + 1];
-    // while (1) {
+    char input_word[LENGTH + 1];
+    while (1) {
 
-    //     printf("> ");
+        printf("> ");
 
-    //     // Read user input
-    //     if (scanf("%45s", input_word) != 1) {
+        // Read user input
+        if (scanf("%45s", input_word) != 1) {
 
-    //         // Clear stdin if there was an issue
-    //         while (getchar() != '\n' && getchar() != EOF);
-    //         continue;
-    //     }
+            // Clear stdin if there was an issue
+            while (getchar() != '\n' && getchar() != EOF);
+            continue;
+        }
 
-    //     // Check for exit commands
-    //     if (strcmp(input_word, "/quit") == 0 || strcmp(input_word, "/exit") == 0) {
-    //         break;
-    //     }
+        // Check for exit commands
+        if (strcmp(input_word, "/quit") == 0 || strcmp(input_word, "/exit") == 0) {
+            break;
+        }
 
-    //     // Check if the word exists in the hash table
-    //     int count = check(input_word);
-    //     if (count > 0) {
-    //         printf("'%s' appeared %d time(s) in the file.\n", input_word, count);
-    //     } else {
-    //         printf("'%s' is NOT in the file.\n", input_word);
-    //     }
-    // }
+        // Check if the word exists in the hash table
+        int count = check(input_word);
+        if (count > 0) {
+            printf("'%s' appeared %d time(s) in the file.\n", input_word, count);
+        } else {
+            printf("'%s' is NOT in the file.\n", input_word);
+        }
+    }
 
     // Call unload function to free memory
     unload();
